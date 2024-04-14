@@ -14,12 +14,12 @@ win = t.Screen()    # creating a window
 win.title("Ping-Pong Game") # Giving name to the game.
 win.bgcolor('black')    # providing color to the HomeScreen
 win.setup(width=800,height=600) # Size of the game panel 
-win.tracer(4)   # which speed up's the game.
+win.tracer(0)   # which speed up's the game.
 
 # Creating left paddle for the game
 
 paddle_left = t.Turtle()
-paddle_left.speed(-1)
+paddle_left.speed(0)
 paddle_left.shape('square')
 paddle_left.color('red')
 paddle_left.shapesize(stretch_wid=5,stretch_len=1)
@@ -43,9 +43,9 @@ ball.speed(0)
 ball.shape('circle')
 ball.color('yellow')
 ball.penup()
-ball.goto(10,10)
-ball_dx = 0.3   # Setting up the pixels for the ball movement.
-ball_dy = 0.3
+ball.goto(0,0)
+ball_dx = 0.2   # Setting up the pixels for the ball movement.
+ball_dy = 0.2
 
 # Creating a pen for updating the Score
 
@@ -138,13 +138,32 @@ while True:
 
 
     # Handling the collisions with paddles.
+    # Handling the collisions with paddles.
 
-    if(ball.xcor() > 340) and (ball.xcor() < 350) and (ball.ycor() < paddle_right.ycor() + 40 and ball.ycor() > paddle_right.ycor() - 40):
+    if (340 < ball.xcor() < 350) and (paddle_right.ycor() - 50 < ball.ycor() < paddle_right.ycor() + 50):
         ball.setx(340)
-        ball_dx = ball_dx * -1
+        ball_dx *= -1
         os.system("afplay paddle.wav&")
 
-    if(ball.xcor() < -340) and (ball.xcor() > -350) and (ball.ycor() < paddle_left.ycor() + 40 and ball.ycor() > paddle_left.ycor() - 40):
+    if (-350 < ball.xcor() < -340) and (paddle_left.ycor() - 50 < ball.ycor() < paddle_left.ycor() + 50):
         ball.setx(-340)
-        ball_dx = ball_dx * -1
+        ball_dx *= -1
         os.system("afplay paddle.wav&")
+
+    
+    
+    
+    
+    
+    
+    
+
+#    if(ball.xcor() > 340) and (ball.xcor() < 350) and (ball.ycor() < paddle_right.ycor() + 40 and ball.ycor() > paddle_right.ycor() - 40):
+ #       ball.setx(340)
+  #      ball_dx = ball_dx * -1
+   #     os.system("afplay paddle.wav&")
+
+    #if(ball.xcor() < -340) and (ball.xcor() > -350) and (ball.ycor() < paddle_left.ycor() + 40 and ball.ycor() > paddle_left.ycor() - 40):
+#        ball.setx(-340)
+ #       ball_dx = ball_dx * -1
+  #      os.system("afplay paddle.wav&")
